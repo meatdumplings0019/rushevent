@@ -26,7 +26,7 @@ class _EventManager:
     def __init__(self):
         if not self.initialized:
             self.initialized = True
-            self._events = []
+            self._events = {}
 
     def _init(self):
         self._quit = False
@@ -35,14 +35,11 @@ class _EventManager:
     def update(self):
         self._init()
 
-        self._events = pygame.event.get()
+        for event in pygame.event.get():
+            self._events[event.type] = event
 
-    def get(self, key):
-        for event in self._events:
-            if event.type == key:
-                return _EventObj(event)
-
-        return None
+    def get(self, key) -> _EventObj:
+        return _EventObj(self._events.get(key, None))
 
 
 class EventFinder:
