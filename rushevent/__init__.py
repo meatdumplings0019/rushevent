@@ -29,12 +29,8 @@ class _EventManager:
             self.initialized = True
             self._events = {}
 
-    def _init(self):
-        self._quit = False
-        self._window_close = None
-
     def update(self):
-        self._init()
+        self._events.clear()
 
         for event in pygame.event.get():
             self._events[event.type] = event
