@@ -3,15 +3,16 @@
 
 class _EventObj:
     def __init__(self, event: pygame.event.Event):
-        self.event = event
-        for prop, value in event.__dict__.items():
-            setattr(self, prop, value)
+        self._event = event
+        if self._event is not None:
+            for prop, value in event.__dict__.items():
+                setattr(self, prop, value)
 
     def __bool__(self):
-        return not self.event is None
+        return not self._event is None
 
     def __str__(self):
-        return str(self.event)
+        return str(self._event)
 
 
 class _EventManager:

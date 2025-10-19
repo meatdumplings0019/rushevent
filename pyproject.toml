@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rushevent"
-version = "0.1.1"
+version = "0.1.2"
 description = "python event"
 authors = [
     {name = "ndrzy", email = "dandan0019@outlook.com"}
